@@ -28,4 +28,9 @@ export class ProductService {
     return Observable.throw(error.json().error || 'Server error');
   }
 
+  getProduct(id: number): Observable<IProduct> {
+        return this.getProducts()
+            .map((products: IProduct[]) => products.find(p => p.productId === id));
+    }
+
 }
